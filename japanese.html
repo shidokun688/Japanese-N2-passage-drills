@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>読解道場 — Dokkai Dojo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="japanese.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-mark">読</span>
+      <div class="brand-text">
+        <h1>読解道場</h1>
+        <p>Dokkai Dojo &mdash; timed N2 reading drills</p>
+      </div>
+    </div>
+    <nav class="app-nav">
+      <button class="nav-btn active" data-view="view-list">Passages</button>
+      <button class="nav-btn" data-view="view-stats">Progress</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="view-list" class="view active">
+      <div class="section-intro">
+        <span class="eyebrow">選ぶ &mdash; choose a passage</span>
+        <h2>Pick a passage to drill</h2>
+      </div>
+      <div id="passage-list" class="passage-grid"></div>
+    </section>
+
+    <section id="view-quiz" class="view">
+      <div class="quiz-topbar">
+        <button id="btn-back" class="link-btn">&larr; back to passages</button>
+        <div class="timer-wrap">
+          <svg class="timer-ring" viewBox="0 0 80 80">
+            <circle class="timer-ring-bg" cx="40" cy="40" r="34"></circle>
+            <circle id="timer-ring-fg" class="timer-ring-fg" cx="40" cy="40" r="34"></circle>
+          </svg>
+          <span id="timer-label" class="timer-label">5:00</span>
+        </div>
+      </div>
+
+      <div class="quiz-body">
+        <article class="passage-panel">
+          <span class="eyebrow" id="quiz-title-eyebrow">passage</span>
+          <h2 id="quiz-title"></h2>
+          <p id="quiz-text" class="passage-text"></p>
+        </article>
+
+        <div class="questions-panel">
+          <span class="eyebrow">設問 &mdash; questions</span>
+          <div id="questions-list"></div>
+          <button id="btn-submit" class="primary-btn">Submit answers</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-results" class="view">
+      <div class="results-card">
+        <span class="eyebrow">結果 &mdash; result</span>
+        <h2 id="results-heading">Passage complete</h2>
+
+        <div class="results-stats">
+          <div class="stat-block">
+            <span class="stat-value" id="result-score">0/0</span>
+            <span class="stat-label">correct</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-value" id="result-time">0:00</span>
+            <span class="stat-label">time used</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-value" id="result-status">&mdash;</span>
+            <span class="stat-label">finish status</span>
+          </div>
+        </div>
+
+        <div id="results-breakdown" class="results-breakdown"></div>
+
+        <div class="results-actions">
+          <button id="btn-retry" class="secondary-btn">Try again</button>
+          <button id="btn-to-list" class="primary-btn">Choose another passage</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-stats" class="view">
+      <div class="section-intro">
+        <span class="eyebrow">記録 &mdash; your record</span>
+        <h2>Progress over time</h2>
+      </div>
+
+      <div id="stats-summary" class="stats-summary"></div>
+
+      <div class="stats-history">
+        <h3>Attempt history</h3>
+        <div id="history-list"></div>
+      </div>
+
+      <button id="btn-clear-history" class="text-danger-btn">Clear all history</button>
+    </section>
+
+  </main>
+
+  <script src="passage.js"></script>
+</body>
+</html>
